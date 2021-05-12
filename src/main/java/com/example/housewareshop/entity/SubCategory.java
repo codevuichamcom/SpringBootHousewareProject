@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,4 +25,7 @@ public class SubCategory {
     @ManyToOne
     @JoinColumn(name = "status_id")
     private StatusSubCategory status;
+
+    @OneToMany(mappedBy = "subCategory",cascade = CascadeType.ALL)
+    private List<Product> products;
 }
